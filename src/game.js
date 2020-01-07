@@ -23,6 +23,9 @@ export class Game {
 
             if (bird.shouldFlap(this.pipePairs)) {
                 bird.linVel.y = -flapForce;
+                bird.angPos = bird.angPos < +0.4 ? bird.angPos + bird.angVel * 2 : bird.angPos;
+            } else {
+                bird.angPos = bird.angPos > -0.2 ? bird.angPos - bird.angVel : bird.angPos;
             }
 
             for (const pipePair of this.pipePairs) {

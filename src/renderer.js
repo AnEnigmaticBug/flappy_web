@@ -47,7 +47,11 @@ export class Renderer {
         for (const bird of game.birds) {
             const x = bird.linPos.x - game.shift;
             const y = bird.linPos.y;
-            this.ctx.drawImage(birdImg, x, y, bird.bounds.x, bird.bounds.y);
+            this.ctx.save();
+            this.ctx.translate(x + bird.bounds.x / 2, y + bird.bounds.y / 2);
+            this.ctx.rotate(bird.angPos);
+            this.ctx.drawImage(birdImg, -bird.bounds.x / 2, -bird.bounds.y / 2, bird.bounds.x, bird.bounds.y);
+            this.ctx.restore();
         }
     }
 
