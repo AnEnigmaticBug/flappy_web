@@ -14,10 +14,17 @@ export class Game {
 
     update() {
         this.birds = this.birds.filter((bird) => {
-            return !bird.isDead;
+            return !bird.isDead || bird.linPos.x > this.shift;
         });
 
         for (const bird of this.birds) {
+            if (bird.isDead) {
+                bird.linVel.y += gravity;
+                bird.linPos.y += bird.linVel.y;
+                bird.angPos -= bird.angVel;
+                continue;
+            }
+
             bird.linVel.y += gravity;
             bird.linPos = bird.linPos.plus(bird.linVel);
 
