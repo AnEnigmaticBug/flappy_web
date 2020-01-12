@@ -74,4 +74,10 @@ export class Game {
         }
         return false;
     }
+
+    isOver() {
+        return this.birds.every((bird) => {
+            return bird.isDead && bird.linPos.x < this.shift;
+        });
+    }
 }

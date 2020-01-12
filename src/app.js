@@ -20,6 +20,9 @@ const game = new Game(
 const renderer = new Renderer(document.getElementById('canvas').getContext('2d'));
 
 const loop = () => {
+    if (game.isOver()) {
+        return;
+    }
     game.update();
     renderer.render(game);
     requestAnimationFrame(loop);
