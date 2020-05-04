@@ -14,6 +14,6 @@ export class Bird {
     }
 
     shouldFlap(pipePairs) {
-        return this.controller.shouldFlap(this.linPos, this.linVel, this.bounds, pipePairs);
+        return this.controller.shouldFlap(this.linPos, this.linVel, pipePairs);
     }
 }
