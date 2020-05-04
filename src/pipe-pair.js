@@ -17,7 +17,7 @@ export class PipePairGenerator {
     test() {
         return new PipePair(
             new Vec2(240 * this.n, (this.worldBounds.y / 2) - 60 + Math.sin(this.n * 2 + this.randomization) * 60),
-            new Vec2(60, 120),
+            new Vec2(60, 180),
         );
     }
 

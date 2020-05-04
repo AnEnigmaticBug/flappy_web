@@ -13,7 +13,7 @@ export class Game {
         this.ticks = 0;
         this.pipePairs = [];
 
-        pipePairGenerator.fastForwardTo(worldBounds.x);
+        pipePairGenerator.fastForwardTo(worldBounds.x * 0.4);
     }
 
     update() {
