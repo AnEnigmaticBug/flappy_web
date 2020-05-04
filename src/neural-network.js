@@ -41,6 +41,43 @@ export class NeuralNetwork {
         return a;
     }
 
+    mutate(rate, scale) {
+        for (let i = 0; i < this.layerCount; ++i) {
+            if (Math.random() > rate) {
+                continue;
+            }
+
+            const w = this.ws[i];
+            const b = this.bs[i];
+
+            for (let i = 0; i < w.rows * w.cols; ++i) {
+                w.values[i] += (Math.random() - 0.5) * scale;
+            }
+
+            b.values[0] += (Math.random() - 0.5) * scale;
+        }
+
+        return this;
+    }
+
+    crossWith(mate) {
+        const offspring = new NeuralNetwork(this.ipSize, this.layerSizes);
+
+        const crossMark = Math.floor(Math.random() * this.layerCount);
+
+        for (let i = 0; i < this.layerCount; ++i) {
+            if (i > crossMark) {
+                offspring.ws[i] = mate.ws[i].copy();
+                offspring.bs[i] = mate.bs[i].copy();
+            } else {
+                offspring.ws[i] = this.ws[i].copy();
+                offspring.bs[i] = this.bs[i].copy();
+            }
+        }
+
+        return offspring;
+    }
+
     copy() {
         const copy = new NeuralNetwork(this.ipSize, this.layerSizes);
 
