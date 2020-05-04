@@ -11,6 +11,7 @@ export class Bird {
         this.controller = controller;
         this.isDead = false;
         this.points = 0;
+        this.missHeight = 0;
     }
 
     shouldFlap(pipePairs) {

@@ -1,5 +1,9 @@
 import { cameraVel, flapForce, gravity } from "./conf.js";
 
+const DID_NOT_HIT = 0;
+const HIT_UPPER_PIPE = 1;
+const HIT_LOWER_PIPE = 2;
+
 export class Game {
     constructor(birds, pipePairGenerator, worldBounds) {
         this.birds = birds;
@@ -36,10 +40,22 @@ export class Game {
             }
 
             for (const pipePair of this.pipePairs) {
-                if (this.checkCollisions(bird, pipePair)) {
-                    bird.isDead = true;
-                    break;
+                let hitStatus = this.checkCollisions(bird, pipePair);
+
+                if (hitStatus == DID_NOT_HIT) {
+                    continue;
                 }
+
+                if (hitStatus == HIT_UPPER_PIPE) {
+                    bird.missHeight = pipePair.gapPos.y - bird.linPos.y;
+                }
+
+                if (hitStatus == HIT_LOWER_PIPE) {
+                    bird.missHeight = ((bird.linPos.y - pipePair.gapPos.y) - pipePair.gapBounds.y) + bird.bounds.y;
+                }
+
+                bird.isDead = true;
+                break;
             }
         }
 
@@ -61,18 +77,18 @@ export class Game {
 
     checkCollisions(bird, pipePair) {
         if (bird.linPos.x > pipePair.gapPos.x + pipePair.gapBounds.x) {
-            return false;
+            return DID_NOT_HIT;
         }
         if (bird.linPos.x + bird.bounds.x < pipePair.gapPos.x) {
-            return false;
+            return DID_NOT_HIT;
         }
         if (bird.linPos.y < pipePair.gapPos.y) {
-            return true;
+            return HIT_UPPER_PIPE;
         }
         if (bird.linPos.y + bird.bounds.y > pipePair.gapPos.y + pipePair.gapBounds.y) {
-            return true;
+            return HIT_LOWER_PIPE;
         }
-        return false;
+        return DID_NOT_HIT;
     }
 
     isOver() {
