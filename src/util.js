@@ -4,3 +4,11 @@ export function resizeCanvas(size) {
     canvas.width = size.x;
     canvas.height = size.y;
 }
+
+export async function simulateGame(game, renderer) {
+    while (!game.isOver()) {
+        game.update();
+        renderer.render(game);
+        await new Promise(requestAnimationFrame);
+    }
+}

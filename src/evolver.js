@@ -4,19 +4,8 @@ import { NetController } from './controller.js';
 import { Game } from './game.js';
 import { NeuralNetwork } from './neural-network.js';
 import { PipePairGenerator } from './pipe-pair.js';
+import { simulateGame } from './util.js';
 import { Vec2 } from './vec2.js';
-
-async function simulateGame(game, renderer) {
-    while (true) {
-        if (game.isOver()) {
-            return;
-        }
-
-        game.update();
-        renderer.render(game);
-        await new Promise(requestAnimationFrame);
-    }
-}
 
 function compareBirds(b1, b2) {
     const xDiff = b2.linPos.x - b1.linPos.x;

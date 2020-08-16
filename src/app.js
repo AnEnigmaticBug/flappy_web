@@ -2,6 +2,7 @@ import { worldBounds } from './conf.js';
 import { Renderer } from './renderer.js';
 import { resizeCanvas } from './util.js';
 import { Evolver } from './evolver.js';
+import { Sandbox } from './sandbox.js';
 
 resizeCanvas(worldBounds);
 
@@ -12,12 +13,23 @@ const exitScreen = document.getElementById('exit-screen');
 playScreen.style.display = 'none';
 exitScreen.style.display = 'none';
 
-document.getElementById('play-button').addEventListener('click', async (ev) => {
+document.getElementById('evolve-button').addEventListener('click', async (ev) => {
     menuScreen.style.display = 'none';
     playScreen.style.display = 'flex';
 
     const renderer = new Renderer(document.getElementById('canvas').getContext('2d'));
     await new Evolver(200).run(renderer, 32);
+
+    playScreen.style.display = 'none';
+    exitScreen.style.display = 'flex';
+});
+
+document.getElementById('play-button').addEventListener('click', async (ev) => {
+    menuScreen.style.display = 'none';
+    playScreen.style.display = 'flex';
+
+    const renderer = new Renderer(document.getElementById('canvas').getContext('2d'));
+    await new Sandbox().run(renderer);
 
     playScreen.style.display = 'none';
     exitScreen.style.display = 'flex';
