@@ -1,0 +1,58 @@
+@font-face {
+    font-family:'flappy-bird';
+    src: url('assets/fonts/flappy-bird.ttf');
+}
+
+* {
+    color: white;
+    font-family: 'flappy-bird';
+    font-weight: 400;
+}
+
+.screen {
+    background-image: url('assets/images/background.png');
+    background-size: contain;
+    background-repeat: repeat-x;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 640px;
+    height: 360px;
+}
+
+.screen h1 {
+    display: inline-block;
+    font-size: 80px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgb(128, 128, 128, 128);
+    margin: 40px;
+}
+
+.screen ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+    padding: 0px;
+}
+
+.screen li {
+    background-color: #f73d72;
+    cursor: pointer;
+    font-size: 40px;
+    text-align: center;
+    border-radius: 12px;
+    padding: 8px;
+    width: 100px;
+    box-shadow: 2px 2px 4px 0px rgb(128, 128, 128, 128);
+}
+
+.screen li:hover {
+    background-color: #b42d54;
+}
+
+.screen li:active {
+    background-color: #f73d72;
+}
