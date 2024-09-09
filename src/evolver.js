@@ -1,5 +1,4 @@
 import { Bird } from './bird.js';
-import { worldBounds } from './conf.js';
 import { NetController } from './controller.js';
 import { Game } from './game.js';
 import { NeuralNetwork } from './neural-network.js';
@@ -34,7 +33,7 @@ export class Evolver {
         }
     }
 
-    async run(renderer, generationCount) {
+    async run(renderer, worldBounds, generationCount) {
         for (let g = 0; g < generationCount; ++g) {
             let birds = this.population.map((net) => {
                 return new Bird(

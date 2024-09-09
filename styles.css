@@ -72,6 +72,12 @@ html, body {
     background-color: #f73d72;
 }
 
+#canvas {
+    display: block;
+    width: 100%;
+    height: 100svh;
+}
+
 #about-screen {
     background-image: none;
     background-color: #6fbdc8;
