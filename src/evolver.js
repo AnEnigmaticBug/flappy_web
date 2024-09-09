@@ -33,8 +33,9 @@ export class Evolver {
         }
     }
 
-    async run(renderer, worldBounds, generationCount) {
+    async run(renderer, worldBounds, generationCount, generationChangeCallback) {
         for (let g = 0; g < generationCount; ++g) {
+            generationChangeCallback(g);
             let birds = this.population.map((net) => {
                 return new Bird(
                     new Vec2(34, 24),

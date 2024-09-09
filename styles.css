@@ -72,6 +72,26 @@ html, body {
     background-color: #f73d72;
 }
 
+.stat-list {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.stat-label {
+    font-size: 2rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+}
+
+.canvas-wrapper {
+    width: 100%;
+}
+
 #canvas {
     display: block;
     width: 100%;

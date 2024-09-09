@@ -11,7 +11,15 @@
 
 <body>
     <div id="play-screen" class="screen">
-        <canvas id="canvas">Hi Netscape User ;)</canvas>
+        <div class="canvas-wrapper">
+            <canvas id="canvas">Hi Netscape User ;)</canvas>
+            <dl class="stat-list">
+                <div class="stat">
+                    <dt class="stat-label">Score</dt>
+                    <dd id="score" class="stat-value">0</dd>
+                </div>
+            </dl>
+        </div>
     </div>
     <script src="src/play-screen.js" type="module"></script>
 </body>

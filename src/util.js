@@ -11,6 +11,26 @@ export function resizeCanvas(size) {
     canvas.height = size.y;
 }
 
+export class ScoreIncrementer {
+    constructor(scoreElement) {
+        this.score = 0;
+        this.scoreElement = scoreElement;
+        this.interval = setInterval(() => {
+            this.score++;
+            this.scoreElement.innerText = this.score.toString();
+        }, 1000);
+    }
+
+    reset() {
+        this.score = 0;
+        this.scoreElement.innerText = '0';
+    }
+
+    stop() {
+        clearInterval(this.interval);
+    }
+}
+
 export async function simulateGame(game, renderer) {
     while (!game.isOver()) {
         game.update();

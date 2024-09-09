@@ -32,4 +32,4 @@ I was focussed on getting the GA demo onto the screen. So, it meant that I took 
 - [ ] Allow persisting a neural net to a downloadable file 
 - [X] Allow user to choose b/w the game and the demo
 - [ ] Allow user to speed up the demo
-- [ ] Display basic info(like generation number, current max fitness etc) in a GUI
+- [X] Display basic info(like generation number, current max fitness etc) in a GUI
