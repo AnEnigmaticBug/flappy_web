@@ -1,6 +1,7 @@
 import { worldBounds } from "./conf.js";
 
 const pressedKeys = new Map();
+let clicked = false;
 
 document.addEventListener('keydown', (ev) => {
     pressedKeys.set(ev.keyCode, true);
@@ -10,13 +11,22 @@ document.addEventListener('keyup', (ev) => {
     pressedKeys.set(ev.keyCode, false);
 });
 
+document.addEventListener('pointerdown', (ev) => {
+    clicked = true;
+    console.log('pointerdown');
+});
+
+document.addEventListener('pointerup', (ev) => {
+    clicked = false;
+});
+
 export class KeyController {
     constructor(flapKeyCode) {
         this.flapKeyCode = flapKeyCode;
     }
 
     shouldFlap(linPos, linVel, pipePairs) {
-        return pressedKeys.has(this.flapKeyCode) && pressedKeys.get(this.flapKeyCode);
+        return clicked || pressedKeys.has(this.flapKeyCode) && pressedKeys.get(this.flapKeyCode);
     }
 }
 
