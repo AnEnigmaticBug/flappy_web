@@ -4,35 +4,41 @@
 }
 
 * {
+    box-sizing: border-box;
+    margin: 0;
     color: white;
     font-family: 'flappy-bird';
     font-weight: 400;
+}
+
+html, body {
+    height: 100%;
 }
 
 .screen {
     background-image: url('assets/images/background.png');
     background-size: contain;
     background-repeat: repeat-x;
+    background-color: #80df7b;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 640px;
-    height: 360px;
+    min-height: 100%;
 }
 
 .screen h1 {
     display: inline-block;
-    font-size: 80px;
+    font-size: 8rem;
     text-align: center;
     text-shadow: 1px 1px 2px rgb(128, 128, 128, 128);
-    margin: 40px;
+    margin: 4rem auto 6rem auto;
 }
 
 .screen p {
-    font-size: 20px;
+    font-size: 2rem;
     padding-left: 1em;
     padding-right: 1em;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .button-list {
@@ -49,13 +55,12 @@
     background-color: #f73d72;
     display: block;
     cursor: pointer;
-    font-size: 40px;
+    font-size: 4rem;
     text-align: center;
     text-decoration: none;
     border-radius: 12px;
     border-width: 0;
-    padding: 8px;
-    width: 100px;
+    padding: 0.5rem 0.8rem;
     box-shadow: 2px 2px 4px 0px rgb(128, 128, 128, 128);
 }
 
@@ -70,4 +75,15 @@
 #about-screen {
     background-image: none;
     background-color: #6fbdc8;
+    padding-bottom: 2rem;
+}
+
+#evolve-screen {
+    background-image: none;
+    background-color: #1e2021;
+}
+
+#play-screen {
+    background-image: none;
+    background-color: #1e2021;
 }
