@@ -109,6 +109,13 @@ html, body {
     background-color: #1e2021;
 }
 
+#evolve-screen .button-list {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
 #play-screen {
     background-image: none;
     background-color: #1e2021;
