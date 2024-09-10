@@ -14,9 +14,11 @@ export function resizeCanvas(size) {
 export class ScoreIncrementer {
     constructor(scoreElement) {
         this.score = 0;
+        this.maxScore = 0;
         this.scoreElement = scoreElement;
         this.interval = setInterval(() => {
             this.score++;
+            this.maxScore = Math.max(this.score, this.maxScore);
             this.scoreElement.innerText = this.score.toString();
         }, 1000);
     }
