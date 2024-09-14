@@ -15,10 +15,15 @@ function compareBirds(b1, b2) {
     return xDiff;
 }
 
+function calcFitness(bird) {
+    return bird.linPos.x * 10 - bird.missHeight;
+}
+
 function getMatingBird(birds) {
     const competitor1 = birds[Math.floor(Math.random() * birds.length)];
     const competitor2 = birds[Math.floor(Math.random() * birds.length)];
 
+    // TODO: Consider replacing direct comparison with fitness based approach.
     return compareBirds(competitor1, competitor2) <= 0 ?
         competitor1 :
         competitor2;
@@ -27,6 +32,7 @@ function getMatingBird(birds) {
 export class Evolver {
     constructor(populationSize) {
         this.population = [];
+        this.generationWiseFitnesses = [];
 
         for (let i = 0; i < populationSize; ++i) {
             this.population.push(new NeuralNetwork(4, [2, 2, 1]));
@@ -47,6 +53,7 @@ export class Evolver {
             await simulateGame(game, renderer);
 
             birds.sort(compareBirds);
+            this.generationWiseFitnesses.push(birds.map(calcFitness));
             birds = birds.slice(0, birds.length / 4);
 
             this.population.length = 0;

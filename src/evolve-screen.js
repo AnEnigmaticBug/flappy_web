@@ -11,14 +11,17 @@ const renderer = new Renderer(document.getElementById('canvas').getContext('2d')
 const populationSize = 200;
 sessionStorage.setItem('populationSize', populationSize);
 
+const evolver = new Evolver(populationSize);
+
 const onFinish = () => {
     scoreIncrementer.stop();
     sessionStorage.setItem('maxScore', scoreIncrementer.maxScore);
+    sessionStorage.setItem('generationWiseFitnesses', JSON.stringify(evolver.generationWiseFitnesses));
     window.location.href = 'result.html';
 };
 document.getElementById('end-button').addEventListener('click', onFinish);
 
-await new Evolver(populationSize).run(renderer, worldBounds, 32, (generation) => {
+await evolver.run(renderer, worldBounds, 32, (generation) => {
     document.getElementById('generation').innerText = generation.toString();
     scoreIncrementer.reset();
     sessionStorage.setItem('generationCount', generation + 1);
