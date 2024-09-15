@@ -11,5 +11,6 @@ const renderer = new Renderer(document.getElementById('canvas').getContext('2d')
 await new Sandbox().run(renderer, worldBounds);
 
 scoreIncrementer.stop();
+sessionStorage.setItem('score', scoreIncrementer.maxScore);
 // Sandbox.run finishes only when the user loses.
 window.location.href = 'fail.html';
