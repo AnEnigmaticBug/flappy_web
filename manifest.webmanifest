@@ -1,0 +1,16 @@
+{
+    "name": "Flappy Web",
+    "description": "A flappy bird clone + a genetic algorithm demo",
+    "scope": ".",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#6fbdc8",
+    "theme_color": "#6fbdc8",
+    "icons": [
+        {
+            "src": "assets/images/icon.png",
+            "type": "image/png",
+            "sizes": "256x256"
+        }
+    ]
+}
